@@ -17,7 +17,7 @@ namespace UTILS
 
        static String[] Centenas = { "cero" , "cien" , "doscientos" , "trescientos" , "cuatrocientos" , "quinientos", "seiscientos" , "setecientos"
                 , "ochocientos" , "novecientos" };
-
+        
         public static void TestUnidades()
         {
             //recorre todo el array de string
@@ -83,6 +83,39 @@ namespace UTILS
                 if (residuo > 0) 
                     aux += " " + getDecenas(residuo);
                
+            }
+            return aux;
+        }
+        public static string getmiles(int num)
+        {
+            String aux = "";
+            if (num < 1000)
+                aux = getCentenas(num);
+            else if (num == 1000)
+                aux = "mil";
+            else if (num >= 1001 && num < 1000000)
+            {
+                int n1 = num / 1000, n2 = num % 1000;
+                aux = getCentenas(n1) + " mil ";
+                if (n2 > 0) aux = getCentenas(n1) + " mil " + getCentenas(n2);
+            }
+            return aux;
+        }
+        public static string getMillar(int num)
+        {
+            int n1 = num / 1000000, n2 = num % 1000000, n3 = n2 % 1000;
+            String aux = "";
+            if (num < 1000000)
+                aux = getmiles(num);
+            else if (num >= 1000000 && num < 2000000)
+            {
+                aux = "un millon ";
+                if (n2 > 0) aux = "un millon " + getmiles(n2);
+            }
+            else if (num >= 2000000 && num < 1000000000)
+            {
+                aux = getmiles(n1) + " millones ";
+                if (n2 > 0) aux = getmiles(n1) + " millones " + getmiles(n2);
             }
             return aux;
         }

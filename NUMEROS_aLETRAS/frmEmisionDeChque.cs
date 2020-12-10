@@ -19,9 +19,13 @@ namespace NUMEROS_aLETRAS
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //UTILS.NumerosLetras.TestUnidades();
             int num = Int32.Parse(this.txtCantidad.Text);
-            this.txtResultado.Text = UTILS.NumerosLetras.getCentenas(num);
+            this.txtResultado.Text = UTILS.NumerosLetras.getMillar(num);
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
